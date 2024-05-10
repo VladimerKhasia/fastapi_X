@@ -1,0 +1,32 @@
+services:
+  api:
+    image: ladokhasia/fastapi_x # build: .
+    depends_on:
+      - postgres
+    ports:
+      - 80:8000
+    # volumes:
+    #   - ./:/usr/src/app:ro
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # env_file:
+    #   - ./.env
+    environment:
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRESS_PASSWORD: ${DB_PASSWORD}
+      POSTGRESS_DB: ${DB_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+      postgres-db:
