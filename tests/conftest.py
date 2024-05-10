@@ -16,7 +16,7 @@ TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_eng
 ###------------------ for test database
 @pytest.fixture
 def session():
-    models.Base.metadata.drop_all(bind=test_engine) 
+     
     models.Base.metadata.create_all(bind=test_engine) 
 
     db = TestSessionLocal()
@@ -24,6 +24,8 @@ def session():
         yield db
     finally:
         db.close()
+        
+    models.Base.metadata.drop_all(bind=test_engine)
 
 @pytest.fixture
 def client(session):
