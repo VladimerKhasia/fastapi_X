@@ -21,7 +21,7 @@ jobs:
         env:   
           POSTGRES_USER: ${{secrets.DB_USERNAME}} 
           POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   # name has to be POSTGRES_PASSWORD 
-          POSTGRES_DATABASE: ${{secrets.DB_NAME}}_test 
+          DB_NAME: ${{secrets.DB_NAME}}_test 
         ports:
           - 5432:5432          
         options: >-
@@ -50,13 +50,13 @@ jobs:
       #       >&2 echo "Waiting for PostgreSQL..."
       #       sleep 1
       #     done   
-      # - name: Connect to PostgreSQL
-      #   run: |
-      #     psql -h localhost -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }}_test -f create_tables.sql
-      #   env:
-      #     POSTGRES_USER: ${{secrets.DB_USERNAME}} 
-      #     POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   
-      #     POSTGRES_DATABASE : ${{secrets.DB_NAME}}_test       
+      - name: Connect to PostgreSQL
+        run: |
+          psql -h localhost -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }}_test -f create_tables.sql
+        env:
+          POSTGRES_USER: ${{secrets.DB_USERNAME}} 
+          POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   
+          DB_NAME: ${{secrets.DB_NAME}}_test       
       - name: run pytest tests
         run: |
           pip install pytest
