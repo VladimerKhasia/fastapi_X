@@ -12,6 +12,7 @@ services:
     # env_file:
     #   - ./.env
     environment:
+      POSTGRES_PASSWORD: ladolado
       DB_USERNAME: postgres
       DB_PASSWORD: ladolado
       DB_HOST: postgres

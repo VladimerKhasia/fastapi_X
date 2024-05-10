@@ -5,7 +5,8 @@ on: [push, pull_request]
 jobs:
 
   build:
-    env:                        
+    env:   
+      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}                     
       DB_USERNAME: ${{secrets.DB_USERNAME}}     # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions
       DB_PASSWORD: ${{secrets.DB_PASSWORD}}
       DB_HOST: ${{secrets.DB_HOST}}     
@@ -17,6 +18,7 @@ jobs:
     services:
       postgres:
         env:
+          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
           DB_PASSWORD: ${{secrets.DB_PASSWORD}}
           DB_NAME: ${{secrets.DB_NAME}}_dev 
         image: postgres
