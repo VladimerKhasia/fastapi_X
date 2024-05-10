@@ -13,14 +13,14 @@ services:
     #   - ./.env
     environment:
       POSTGRES_PASSWORD: ladolado
-      DB_USERNAME: postgres
-      DB_PASSWORD: ladolado
-      DB_HOST: postgres
-      DB_PORT: 5432
-      DB_NAME: postgres #fastapi_X
-      SECRET_KEY: "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
-      ALGORITHM: "HS256"
-      ACCESS_TOKEN_EXPIRE_MINUTES: 30
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      SECRET_KEY: ${SECRET_KEY}
+      ALGORITHM: ${ALGORITHM}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
 
   postgres:
     image: postgres
