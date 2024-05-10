@@ -6,14 +6,14 @@ jobs:
 
   build:
     env:                        
-      DB_USERNAME: ${{ secrets.DB_USERNAME }}     # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions
-      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-      DB_HOST: ${{ secrets.DB_HOST }}     
-      DB_PORT: ${{ secrets.DB_PORT }}
-      DB_NAME: ${{ secrets.DB_NAME }} 
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      ALGORITHM: ${{ secrets.ALGORITHM }}
-      ACCESS_TOKEN_EXPIRE_MINUTES: ${{ secrets.ACCESS_TOKEN_EXPIRE_MINUTES }}
+      DB_USERNAME: ${{secrets.DB_USERNAME}}     # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      DB_HOST: ${{secrets.DB_HOST}}     
+      DB_PORT: ${{secrets.DB_PORT}}
+      DB_NAME: ${{secrets.DB_NAME}} 
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
