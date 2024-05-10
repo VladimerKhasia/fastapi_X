@@ -44,11 +44,8 @@ jobs:
       - name: install dependencies
         run: pip install -r requirements.txt     
 
-      - uses: hoverkraft-tech/compose-action@v1.5.1
-        with:
-          compose-file: ".docker-compose-dev.yml"
-        env:
-          CUSTOM_VARIABLE: "test"        
+      - name: test using Docker Compose
+        run: docker-compose -f docker-compose-dev up -d --build       
         
       - name: run pytest tests
         run: |
