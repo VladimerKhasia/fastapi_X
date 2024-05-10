@@ -19,6 +19,7 @@ jobs:
       postgres:
         image: postgres
         env:   
+          POSTGRES_USER: ${{secrets.DB_USERNAME}} 
           POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   # name has to be POSTGRES_PASSWORD 
           DB_NAME: ${{secrets.DB_NAME}}_test 
         ports:
@@ -42,7 +43,15 @@ jobs:
       - name: upgrade pip
         run: python -m pip install --upgrade pip   
       - name: install dependencies
-        run: pip install -r requirements.txt          
+        run: pip install -r requirements.txt 
+
+      - name: Wait for PostgreSQL to start
+        run: |
+          until pg_isready -h postgres -p 5432; do
+            >&2 echo "Waiting for PostgreSQL..."
+            sleep 1
+          done        
+        
       - name: run pytest tests
         run: |
           pip install pytest
