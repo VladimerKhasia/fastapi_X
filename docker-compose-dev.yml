@@ -27,8 +27,8 @@ services:
     # env_file:
     #   - ./.env    
     environment:
-      POSTGRESS_PASSWORD: ladolado
-      POSTGRESS_DB: postgres #fastapi_X
+      POSTGRESS_PASSWORD: ${DB_PASSWORD}
+      POSTGRESS_DB: ${DB_PASSWORD} #fastapi_X
     volumes:
       - postgres-db:/var/lib/postgresql/data
 
