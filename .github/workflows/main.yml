@@ -52,7 +52,7 @@ jobs:
       #     done   
       - name: Connect to PostgreSQL
         run: |
-          psql -h localhost -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }}_test -f create_tables.sql
+          psql -h postgres -U ${{ secrets.DB_USERNAME }} -d ${{ secrets.DB_NAME }}_test -f create_tables.sql
         env:
           POSTGRES_USER: ${{secrets.DB_USERNAME}} 
           POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   
