@@ -1,4 +1,4 @@
-name: CI/CD Fastapi_X
+name: CI Fastapi_X
 
 on: [push, pull_request]
 
@@ -13,7 +13,20 @@ jobs:
       DB_NAME: ${{secrets.DB_NAME}} 
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       ALGORITHM: ${{secrets.ALGORITHM}}
-      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
+    services:
+      postgres:
+        env:
+          DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+          DB_NAME: ${{secrets.DB_NAME}}_dev 
+        image: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5        
+        ports:
+          - 5432:5432  
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
