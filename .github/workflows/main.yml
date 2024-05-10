@@ -6,28 +6,28 @@ jobs:
 
   build:
 
-    # env:  
-    #   DB_USERNAME: ${{secrets.DB_USERNAME}}     # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions                    
-    #   DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-    #   DB_HOST: ${{secrets.DB_HOST}}     
-    #   DB_PORT: ${{secrets.DB_PORT}}
-    #   DB_NAME: ${{secrets.DB_NAME}} 
-    #   SECRET_KEY: ${{secrets.SECRET_KEY}}
-    #   ALGORITHM: ${{secrets.ALGORITHM}}
-    #   ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
-    # services:
-      # postgres:
-      #   image: postgres
-      #   env:   
-      #     POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   # name has to be POSTGRES_PASSWORD 
-      #     DB_NAME: ${{secrets.DB_NAME}}_test 
-      #   ports:
-      #     - 5432:5432           
-      #   options: >-
-      #     --health-cmd pg_isready
-      #     --health-interval 10s
-      #     --health-timeout 5s
-      #     --health-retries 5        
+    env:  
+      DB_USERNAME: ${{secrets.DB_USERNAME}}     # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions                    
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      DB_HOST: ${{secrets.DB_HOST}}     
+      DB_PORT: ${{secrets.DB_PORT}}
+      DB_NAME: ${{secrets.DB_NAME}} 
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
+    services:
+      postgres:
+        image: postgres
+        env:   
+          POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   # name has to be POSTGRES_PASSWORD 
+          DB_NAME: ${{secrets.DB_NAME}}_test 
+        ports:
+          - 5432:5432           
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5        
     runs-on: ubuntu-latest
     # strategy:
     #   matrix:
@@ -42,11 +42,7 @@ jobs:
       - name: upgrade pip
         run: python -m pip install --upgrade pip   
       - name: install dependencies
-        run: pip install -r requirements.txt     
-
-      - name: test using Docker Compose
-        run: docker-compose -f docker-compose-dev up -d --build       
-        
+        run: pip install -r requirements.txt          
       - name: run pytest tests
         run: |
           pip install pytest
