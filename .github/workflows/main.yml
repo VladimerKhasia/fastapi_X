@@ -30,7 +30,7 @@ jobs:
           # ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
           DB_NAME: ${{secrets.DB_NAME}}_test 
         ports:
-          - 5432:5432            
+          - 5432:5433            
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
