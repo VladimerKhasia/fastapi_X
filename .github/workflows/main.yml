@@ -6,8 +6,7 @@ jobs:
 
   build:
     env:  
-      # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions
-      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}                      
+      # you can also define secrets for whole repo: github -> fastapi_X -> settings -> secrets and variables -> actions                    
       DB_USERNAME: ${{secrets.DB_USERNAME}}     
       DB_PASSWORD: ${{secrets.DB_PASSWORD}}
       DB_HOST: ${{secrets.DB_HOST}}     
@@ -21,13 +20,7 @@ jobs:
       postgres:
         image: postgres
         env:   
-          POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}   # name has to be POSTGRES_PASSWORD
-          # DB_PASSWORD: ${{secrets.DB_PASSWORD}}
-          # DB_HOST: ${{secrets.DB_HOST}}     
-          # DB_PORT: ##${{secrets.DB_PORT}}
-          # SECRET_KEY: ${{secrets.SECRET_KEY}}
-          # ALGORITHM: ${{secrets.ALGORITHM}}
-          # ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
+          POSTGRES_PASSWORD: ${{secrets.DB_PASSWORD}}   # name has to be POSTGRES_PASSWORD 
           DB_NAME: ${{secrets.DB_NAME}}_test 
         ports:
           - 5432:5432           
