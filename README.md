@@ -1,6 +1,6 @@
 Simplified backend for X
 
-`fastapi` `pydantic` `sqlalchemy 2` `alembic` `postgresql` `pytest` `docker` `github actions` etc.
+`fastapi` `pydantic` `sqlalchemy 2` `alembic` `postgresql` `pytest` `docker` `CI/CD github-actions` etc.
 
 Quick overview of current version:
 ![Capture](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/f9c0d160-f737-4d26-8185-6fd88737c43d)
