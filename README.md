@@ -195,8 +195,8 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 - DO NOT: `sudo ufw allow 5432`  (for postgresql, as/when your app uses database from your local machine and does not need it. And not openning 5432 is of course more secure.
 
 - `sudo ufw enable`              (will start your firewall) 
-- `sudo uwf status`
-- `sudo uwf delete allow 5432`   (in case you have set this rule and want to delete it)
+- `sudo ufw status`
+- `sudo ufw delete allow 5432`   (in case you have set this rule and want to delete it)
 
 ---------------------------------------Other helper commands
 
