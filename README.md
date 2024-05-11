@@ -133,7 +133,8 @@ Deployment to the Ubuntu VM:
         [Install]
         WantedBy=multi-user.target
         
-)
+and do not forget in the very end of the file `:wq`)
+
 - `systemctl status api`
 - `systemctl deamon-reload`      (we run this each time after we change api.service file)
 - `systemctl restart api`  
