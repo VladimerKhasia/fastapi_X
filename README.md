@@ -23,9 +23,9 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 #### DB_NAME = #postgres #fastapi_X 
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
-To get a SECRET_KEY string run in git bash if you are on windows:  `openssl rand -hex 32`
+>To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt) 
 
-Docker Image uploaded: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
+Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
 
 REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=44689s) and many thanks to him!
 
