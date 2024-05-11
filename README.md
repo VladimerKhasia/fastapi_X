@@ -27,6 +27,7 @@ REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=
 Deployment to the Ubuntu VM:
 
 -------------------------------------------------------------------------- connect local postgres to remote Ubuntu
+
 - `ssh root@IP of a host where your vm will live`  type yes, type your password
 - `sudo apt update && sudo apt upgrade -y`
 - check python version and install whatever version you need
@@ -47,6 +48,7 @@ Deployment to the Ubuntu VM:
 - systemctl restart postgresql   (restarts application so that made changes apply and now you can login with just: `psql -U postgres` AND you can connect your local computer database to the VM just by giving hostname/IP and password in you Pgadmin GUI) 
 
 -----------------------------------------------------------------------------   create sudo user
+
 - `adduser some_user_name -y` (create user with sudo perivileges, do not use root user itself to avoid breaking things. This prompts giving password)
 
 - `usermod -aG sudo  some_user_name`   (give sudo perivileges to created user)
@@ -59,6 +61,7 @@ Deployment to the Ubuntu VM:
 - `cd ~`                               (brings you to your home directory → `cd   /home/some_user_name`)
 
 -----------------------------------------------------------------------------  set up the application
+
 - `mkdir app` 
 - `cd app` 
 - `virtualenv venv`
@@ -104,6 +107,7 @@ Deployment to the Ubuntu VM:
 - `uvicorn –host 0.0.0.0 app.main:app` (to listen to any IP and finally we can run our application! BUT we do not use –reload flag in production. Instead we use process manager gunicorn)
 
 ---------------------------------------------------------------------------------- set gunicorn process manager
+
 - `pip install gunicorn`        (we stand in (env)...~app/src/)
 - `pip install httptools`
 - `pip install uvloop`
@@ -113,6 +117,7 @@ Deployment to the Ubuntu VM:
 - `ps -aef | grep -i gunicorn`  (will show you 5 processes 1 parent 4 children)
 
 ----------------------------------------------- create systemctl service that starts our application automatically
+
 - `cd  /etc/systemd/system/`    (to see all services on our machine. we are still in venv)
 - `ls`
 - `sudo vi api.service`         (go to our fastapi_x application and copy the content from the file `gunicorn.service` inside this oppened file. In the end `:wq` to save and exit) 
@@ -141,6 +146,7 @@ and do not forget in the very end of the file `:wq`)
 - `sudo systemctl enable api`    (very important!!! It ensures that service will automatically start after reboot)
 
 ------------------------------------------ NGINX as intermediary webserver in front of gunicorn for https ssl
+
 - `deactivate`
 - `cd ~`
 - `sudo apt install nginx -y`
@@ -168,15 +174,18 @@ and do not forget in the very end of the file `:wq`)
 - `systemctl restart nginx`
 
 -------------------------------------------------------------- set domain name
+
 Just follow docs of the domain provider (www.something.com) and service provider (remote ubuntu) you choose on the internet and keep in mind most of the time dns takes some time to take effect.
 
 -------------------------------------------------------------- SSL/HTTPS
+
 https://certbot.eff.org/ is website that helps you to enctipt free ssl service. It automatically reconfigures your nginx to handle https (you just write in that you use nginx and ubuntu and gives you exact steps what to do).  AND you execute those commands from `cd  /etc/nginx/sites-available/` which is where we stand now if you follow the instructions.
 
 - `systemctl status nginx`
 - `systemctl enable nginx`       (in case something unusual happens and nginx is not enabled by default)
 
 ----------------------------------------FIREWALL set up to open only those ports we use for basic security
+
 - `sudo ufw status`              (ufd refers to firewall)
 - `sudo ufw allow http`          (allows http traffic)
 - sudo ufw allow https
@@ -188,6 +197,7 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 - `sudo uwf delete allow 5432`   (in case you have set this rule and want to delete it)
 
 ---------------------------------------Other helper commands
+
 - `pytest -v -s -x` , `pytest /some_directory/file -v -s -x`   (-v is verbose, -s shows your print statement results, -x stops tests when one of them fails).
 
 - `docker-compose -f docker-compose-dev.yml up -d --build`     (--build is only if you want build or rebuild)
