@@ -192,8 +192,8 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 
 - `sudo ufw status`              (ufd refers to firewall)
 - `sudo ufw allow http`          (allows http traffic)
-- sudo ufw allow https
-- sudo ufw allow ssh             (ssh because we use that on our ubuntu machine)
+- `sudo ufw allow https`
+- `sudo ufw allow ssh`             (ssh because we use that on our ubuntu machine)
 - DO NOT: `sudo ufw allow 5432`  (for postgresql, as/when your app uses database from your local machine and does not need it. And not openning 5432 is of course more secure.
 
 - `sudo ufw enable`              (will start your firewall) 
