@@ -2,6 +2,8 @@ Simplified backend for X
 
 `fastapi` `pydantic` `sqlalchemy 2` `alembic` `postgresql` `pytest` `docker` `CI/CD github-actions` etc.
 
+TODO: X recently added grok to the application. To ensure learners with low-end devices can still benefit from this repository, we will do the same but with a very small local model, likely Gemma-2b-it. 
+
 Quick overview of current version:
 ![Capture](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/f9c0d160-f737-4d26-8185-6fd88737c43d)
 
