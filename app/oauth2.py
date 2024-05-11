@@ -5,7 +5,6 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from . import schemas, database, models, config
 
-jwt.register_algorithm(config.settings.ALGORITHM)
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl='login')
 
