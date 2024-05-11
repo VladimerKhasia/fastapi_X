@@ -24,6 +24,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
 
+Docker Image uploaded: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
+
 REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=44689s) and many thanks to him!
 
 Deployment to the Ubuntu VM:
@@ -207,3 +209,6 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 - `docker-compose -f docker-compose-dev.yml down`
 - `docker tag fastapi_x-api ladokhasia/fastapi_x`              (prepare to push on docker hub)
 - `docker push ladokhasia/fastapi_x`
+
+- `pip freeze > requirements.txt`
+- `pip install -r requirements.txt`
