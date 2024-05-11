@@ -23,6 +23,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 #### DB_NAME = #postgres #fastapi_X 
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
+To get a SECRET_KEY string run in git bash if you are on windows:  `openssl rand -hex 32`
 
 Docker Image uploaded: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
 
