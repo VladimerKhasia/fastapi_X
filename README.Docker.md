@@ -1,10 +1,3 @@
-Commands I had to use mostly:
-- docker-compose -f docker-compose-dev.yml up -d --build  (--build is only if you want build or rebuild)
-- docker-compose -f docker-compose-dev.yml down
-- docker tag fastapi_x-api ladokhasia/fastapi_x           (prepare to push on docker hub)
-- docker push ladokhasia/fastapi_x
-
-
 ### Building and running your application
 
 When you're ready, start your application by running:
