@@ -119,20 +119,20 @@ Deployment to the Ubuntu VM:
 
 - `systemctl start api`         (api references api.service file. It looks like this:
 
-`[Unit]
-Description= gunicorn instance for fastapi_x application
-After=network.target
-
-[Service]
-User=lado
-Group=lado
-WorkingDirectory=/home/lado/app/src/
-Environment="PATH=/home/lado/app/venv/bin"
-EnvironmentFile=/home/lado/.env
-ExecStart=/home/lado/app/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
-
-[Install]
-WantedBy=multi-user.target`
+  
+        [Unit]
+        Description= gunicorn instance for fastapi_x application
+        After=network.target
+        [Service]
+        User=lado
+        Group=lado
+        WorkingDirectory=/home/lado/app/src/
+        Environment="PATH=/home/lado/app/venv/bin"
+        EnvironmentFile=/home/lado/.env
+        ExecStart=/home/lado/app/venv/bin/gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000
+        [Install]
+        WantedBy=multi-user.target
+        
 )
 - `systemctl status api`
 - `systemctl deamon-reload`      (we run this each time after we change api.service file)
@@ -151,7 +151,7 @@ WantedBy=multi-user.target`
 
 - `sudo vi default`            (Open default file and overwrite it with the part of the content we have in fastapi_x  nginx file:
 
-        `location / {
+        location / {
                 proxy_pass http://localhost:8000;
                 proxy_http_version 1.1;
                 proxy_set_header X-Real-IP $remote_addr;
@@ -160,7 +160,7 @@ WantedBy=multi-user.target`
                 proxy_set_header Connection 'upgrade';
                 proxy_set_header Host $http_host;
                 proxy_set_header X-NginX-Proxy true;
-                proxy_redirect off;`
+                proxy_redirect off;
 
 and do not forget in the very end of the file `:wq`)
 
