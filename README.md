@@ -204,6 +204,7 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 
 - `pytest -v -s -x` , `pytest /some_directory/file -v -s -x`   (-v is verbose, -s shows your print statement results, -x stops tests when one of them fails).
 
+- `docker init`   `docker build -t fastapi_x .`
 - `docker-compose -f docker-compose-dev.yml up -d --build`     (--build is only if you want build or rebuild)
 - `docker-compose up -d –build`                                (in case your file is actually called `docker-compose.yml`)
 - `docker-compose -f docker-compose-dev.yml down`
