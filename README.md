@@ -25,6 +25,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=44689s) and many thanks to him!
 
 Deployment to the Ubuntu VM:
+
 -------------------------------------------------------------------------- connect local postgres to remote Ubuntu
 - `ssh root@IP of a host where your vm will live`  type yes, type your password
 - `sudo apt update && sudo apt upgrade -y`
