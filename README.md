@@ -8,7 +8,7 @@ Quick overview of current version:
 ![Capture](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/f9c0d160-f737-4d26-8185-6fd88737c43d)
 
 
-You need to add .env file in root directory. Example .env file looks like this:
+You need to add .env file in the root directory. Example .env file looks like this:
 ```
 DB_USERNAME = postgres
 DB_PASSWORD = your_password
