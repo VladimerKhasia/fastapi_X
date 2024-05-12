@@ -36,6 +36,9 @@ jobs:
     steps:  
       - name: pull git repo (checkout)
         uses: actions/checkout@v4
+      - name: Set UTC timezone
+        run: |
+          sudo timedatectl set-timezone UTC  
       - name: install python
         uses: actions/setup-python@v5
         with: 
