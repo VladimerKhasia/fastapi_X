@@ -47,9 +47,6 @@ jobs:
 
       - name: run pytest tests
         run: |
-          pip install iniconfig
-          pip install packaging
-          pip install pluggy==1.5
           pip install pytest
           pytest 
 
