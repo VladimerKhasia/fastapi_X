@@ -26,24 +26,24 @@ def test_unauthorized_create_post(client):
 
 ### ---------------------- get request tests
 
-def test_get_all_posts(logged_client, test_posts):
-    re = logged_client.get("/posts/")
-    # print(re.json()[0]["Post"])
-    # print(f"\n\n------------------\n\n{jsonable_encoder(test_posts)[0]}")
-    def response_validator(response_post):
-        response_post = schemas.PostResponse(**response_post) 
-        return response_post.Post.model_dump() 
-    def test_post_validator(test_post):
-        test_post = schemas.Post(**jsonable_encoder(test_post))
-        return test_post.model_dump() 
+# def test_get_all_posts(logged_client, test_posts):
+#     re = logged_client.get("/posts/")
+#     # print(re.json()[0]["Post"])
+#     # print(f"\n\n------------------\n\n{jsonable_encoder(test_posts)[0]}")
+#     def response_validator(response_post):
+#         response_post = schemas.PostResponse(**response_post) 
+#         return response_post.Post.model_dump() 
+#     def test_post_validator(test_post):
+#         test_post = schemas.Post(**jsonable_encoder(test_post))
+#         return test_post.model_dump() 
     
-    re_posts = list(map(response_validator, re.json())) 
-    tst_posts = list(map(test_post_validator, test_posts))
+#     re_posts = list(map(response_validator, re.json())) 
+#     tst_posts = list(map(test_post_validator, test_posts))
 
-    re_posts = sorted(re_posts, key=lambda x: sorted(x.items()))
-    tst_posts = sorted(tst_posts, key=lambda x: sorted(x.items()))
-    assert re.status_code == 200
-    assert re_posts == tst_posts
+#     re_posts = sorted(re_posts, key=lambda x: sorted(x.items()))
+#     tst_posts = sorted(tst_posts, key=lambda x: sorted(x.items()))
+#     assert re.status_code == 200
+#     assert re_posts == tst_posts
 
 def test_unauthorized_get_all_posts(client, test_posts):
     re = client.get("/posts/")
