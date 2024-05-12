@@ -14,18 +14,19 @@ ALGORITHM = config.settings.ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = config.settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 def create_access_token(data: dict):
-    to_encode = data.copy()
-    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    to_encode.update({"exp": expire})
-    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    return encoded_jwt    
-
     # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES) #datetime.now(timezone.utc)
     # expires = timegm(expiration.utctimetuple())  #timegm(datetime.now(timezone.utc)).utctimetuple()
     # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     # expires = timegm(expiration.utctimetuple())
     # unix_timestamp = timegm(datetime.now(timezone.utc).utctimetuple()) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES).total_seconds()
     # expires = datetime.fromtimestamp(unix_timestamp, tz=timezone.utc)
+    to_encode = data.copy()
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt    
+
+
 
 def validate_access_token(token: str, creadential_error):
     try:
