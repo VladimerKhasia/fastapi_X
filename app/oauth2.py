@@ -27,8 +27,7 @@ def create_access_token(data: dict):
 
 def validate_access_token(token: str, creadential_error):
     try:
-        # payload = jwt.decode(token, key=SECRET_KEY, algorithms=[ALGORITHM]) 
-        payload = jwt.decode(token, key=SECRET_KEY, algorithms=["HS256"]) 
+        payload = jwt.decode(token, key=SECRET_KEY, algorithms=[ALGORITHM]) 
         id: str = payload.get("id")
         if id is None:
             raise creadential_error
