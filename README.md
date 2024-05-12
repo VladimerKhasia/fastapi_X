@@ -196,8 +196,8 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 - `sudo ufw status`              (ufd refers to firewall)
 - `sudo ufw allow http`          (allows http traffic)
 - `sudo ufw allow https`
-- `sudo ufw allow ssh`             (ssh because we use that on our ubuntu machine)
-- DO NOT: `sudo ufw allow 5432`  (for postgresql, as/when your app uses database from your local machine and does not need it. And not openning 5432 is of course more secure.
+- `sudo ufw allow ssh`           (ssh because we use that on our ubuntu machine)
+- DO NOT: `sudo ufw allow 5432`  (for postgresql, as/when your app uses database from your local machine and does not need it. And not openning 5432 is of course more secure).
 
 - `sudo ufw enable`              (will start your firewall) 
 - `sudo ufw status`
@@ -216,3 +216,15 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 
 - `pip freeze > requirements.txt`
 - `pip install -r requirements.txt`
+
+- `alembic init`
+- `alembic stamp head`   (already applied migrations up to revision 7e42bdc9bbe8 and want to mark the database as being at that revision without actually running migration scripts again. But also to fix `ERROR [alembic.util.messaging] Target database is not up to date.` you use `alembic stamp head` and then do migration `alembic revision --autogenerate` and then `alembic upgrade head`).
+- `alembic revision -m "your message" --autogenerate`
+- `alembic upgrade head` or `+1` or `+3` or `some_revisions_unique_number_like_7e42bdc9bbe8`
+- `alembic downgrade base` or `-1` or `-7` or `some_revisions_unique_number_like_7e42bdc9bbe8`
+- `alembic show head` or `-1` or `+3` or `some_revisions_unique_number_like_7e42bdc9bbe8`
+- `alembic history` 
+- `alembic current`      (shows the current revision of the database schema)
+- `alembic heads`        (shows the latest unmerged migration scripts across all branches)  
+- `alembic branches`
+- `alembic merge 1234 5678 -m "Merge branches 1234 and 5678"`
