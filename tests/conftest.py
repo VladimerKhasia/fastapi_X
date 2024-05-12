@@ -24,8 +24,7 @@ def session():
     try:
         yield db
     finally:
-        db.close()
-        
+        db.close()       
 
 @pytest.fixture
 def client(session):
