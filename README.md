@@ -56,9 +56,9 @@ Deployment to the Ubuntu VM:
 
 -----------------------------------------------------------------------------   create sudo user
 
-- `adduser some_user_name -y` (create user with sudo perivileges, do not use root user itself to avoid breaking things. This prompts giving password)
+- `sudo adduser some_user_name` (create user with sudo perivileges, do not use root user itself to avoid breaking things. This prompts giving password)
 
-- `usermod -aG sudo  some_user_name`   (give sudo perivileges to created user)
+- `sudo usermod -aG sudo some_user_name`   (give sudo perivileges to created user)
 
 - `su -  some_user_name`               (just to go into the user)
 - `exit`
