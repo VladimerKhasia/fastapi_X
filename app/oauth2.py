@@ -1,3 +1,4 @@
+from calendar import timegm
 from datetime import datetime, timedelta, timezone
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
@@ -14,9 +15,11 @@ ACCESS_TOKEN_EXPIRE_MINUTES = config.settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 def create_access_token(data: dict):
     content = data.copy()
-    expires = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expires = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES) #datetime.now(timezone.utc)
+    #expires = timegm(expires).utctimetuple()  #timegm(datetime.now(timezone.utc)).utctimetuple()
+    print("--------------------", expires, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     content.update({"exp": expires})
-    return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM)
+    return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM) 
 
 def validate_access_token(token: str, creadential_error):
     try:
