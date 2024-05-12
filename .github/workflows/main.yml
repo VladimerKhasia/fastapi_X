@@ -39,6 +39,13 @@ jobs:
       - name: Set UTC timezone
         run: |
           sudo timedatectl set-timezone UTC  
+      - name: Clear cache (optional)
+        uses: actions/cache@v3
+        with:
+          path: node_modules  # Or other directories you want to cache
+          key: ${{ runner.os }}-build-${{ hashFiles('**/package*.json') }}
+          restore-keys: |
+                
       - name: install python
         uses: actions/setup-python@v5
         with: 
