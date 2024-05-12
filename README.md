@@ -191,7 +191,7 @@ https://certbot.eff.org/ is website that helps you to enctipt free ssl service. 
 - `systemctl status nginx`
 - `systemctl enable nginx`       (in case something unusual happens and nginx is not enabled by default)
 
-----------------------------------------FIREWALL set up to open only those ports we use for basic security
+----------------------------------------FIREWALL set up to open only those ports we use. This is for basic security.
 
 - `sudo ufw status`              (ufd refers to firewall)
 - `sudo ufw allow http`          (allows http traffic)
