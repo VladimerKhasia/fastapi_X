@@ -20,7 +20,9 @@ def create_access_token(data: dict):
     to_encode.update({"exp": expire})
     print("-----------------------------------------------------------------", expire, to_encode)
     #encoded_jwt = jwt.encode(to_encode, key=SECRET_KEY, algorithm=ALGORITHM)
-    encoded_jwt = jwt.encode(to_encode, key=SECRET_KEY, algorithm="HS256")
+    encoded_jwt = jwt.encode(to_encode, 
+                             key="7f34c95897afd636d6acf1a44b17e33cd437da2245e0dec841529bc587625873", 
+                             algorithm="HS256")
 
     return encoded_jwt    
 
