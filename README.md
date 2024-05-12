@@ -1,4 +1,6 @@
-Simplified backend for X    [CI/CD github-actions](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+![github-actions](https://github.com/VladimerKhasia/fastapi_X/actions/workflows/main.yml/badge.svg)
+
+Simplified backend for X    
 
 `fastapi` `pydantic` `sqlalchemy 2` `alembic` `postgresql` `pytest` `docker` `CI/CD github-actions` etc.
 
