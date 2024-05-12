@@ -54,7 +54,7 @@ jobs:
       - name: run pytest tests
         run: |
           pip install pytest
-          pytest -v -s -x
+          pytest 
           
   deploy:
 
