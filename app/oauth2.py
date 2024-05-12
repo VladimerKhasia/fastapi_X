@@ -1,6 +1,5 @@
-import pytz
 from calendar import timegm
-import datetime
+from datetime import datetime, timezone, timedelta
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status
@@ -14,18 +13,22 @@ SECRET_KEY = config.settings.SECRET_KEY
 ALGORITHM = config.settings.ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES = config.settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
-def create_access_token(data: dict):
-    content = data.copy()
+def create_access_token(data: dict, expires_delta: timedelta | None = None):
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt    
+
     # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES) #datetime.now(timezone.utc)
     # expires = timegm(expiration.utctimetuple())  #timegm(datetime.now(timezone.utc)).utctimetuple()
     # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     # expires = timegm(expiration.utctimetuple())
     # unix_timestamp = timegm(datetime.now(timezone.utc).utctimetuple()) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES).total_seconds()
     # expires = datetime.fromtimestamp(unix_timestamp, tz=timezone.utc)
-    expires = datetime.datetime.now(pytz.utc) + datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    print("--------------------", expires)
-    content.update({"exp": expires})
-    return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM) 
 
 def validate_access_token(token: str, creadential_error):
     try:
