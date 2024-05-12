@@ -15,11 +15,12 @@ ACCESS_TOKEN_EXPIRE_MINUTES = config.settings.ACCESS_TOKEN_EXPIRE_MINUTES
 
 def create_access_token(data: dict):
     content = data.copy()
-    # expires = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES) #datetime.now(timezone.utc)
-    # expires = timegm(expires).utctimetuple()  #timegm(datetime.now(timezone.utc)).utctimetuple()
-    expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    expires = timegm(expiration.utctimetuple())
-    print("--------------------", expiration, expires, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES) #datetime.now(timezone.utc)
+    # expires = timegm(expiration.utctimetuple())  #timegm(datetime.now(timezone.utc)).utctimetuple()
+    # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    # expires = timegm(expiration.utctimetuple())
+    expires = timegm(datetime.now(timezone.utc).utctimetuple()) + ACCESS_TOKEN_EXPIRE_MINUTES
+    print("--------------------", expires, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
     content.update({"exp": expires})
     return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM) 
 
