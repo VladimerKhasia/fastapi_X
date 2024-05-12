@@ -1,3 +1,4 @@
+import pytz
 from calendar import timegm
 import datetime
 from jose import JWTError, jwt
@@ -21,7 +22,7 @@ def create_access_token(data: dict):
     # expires = timegm(expiration.utctimetuple())
     # unix_timestamp = timegm(datetime.now(timezone.utc).utctimetuple()) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES).total_seconds()
     # expires = datetime.fromtimestamp(unix_timestamp, tz=timezone.utc)
-    expires = timegm(datetime.datetime.now(datetime.timezone.utc).utctimetuple()) + datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES).total_seconds()
+    expires = datetime.datetime.now(pytz.utc) + datetime.timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     print("--------------------", expires)
     content.update({"exp": expires})
     return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM) 
