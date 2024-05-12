@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v4    
       - name: Set UTC timezone
         run: |
-          sudo timedatectl set-timezone UTC+3  
+          sudo timedatectl set-timezone 'UTC+3'  
       - name: install python
         uses: actions/setup-python@v5
         with: 
