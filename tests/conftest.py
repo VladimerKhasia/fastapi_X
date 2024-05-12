@@ -6,7 +6,8 @@ from app import models, database, oauth2
 from app.config import settings
 from app.main import app
 # from alembic import command
-
+# from alembic.config import Config
+# alembic_cfg = Config("alembic.ini")
 
 SQLALCHEMY_TEST_DATABASE_URL = f"postgresql://{settings.DB_USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOST}:{settings.DB_PORT}/{settings.DB_NAME}_test"
 
@@ -17,14 +18,14 @@ TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_eng
 ###------------------ for test database
 @pytest.fixture
 def session():
-    models.Base.metadata.drop_all(bind=test_engine)   # command.downgrade('base')
-    models.Base.metadata.create_all(bind=test_engine) # command.upgrade('head')
+    models.Base.metadata.drop_all(bind=test_engine)   # command.downgrade(alembic_cfg, 'base')
+    models.Base.metadata.create_all(bind=test_engine) # command.upgrade(alembic_cfg, 'head')
     db = TestSessionLocal()
     try:
         yield db
     finally:
         db.close()
-    
+        
 
 @pytest.fixture
 def client(session):
