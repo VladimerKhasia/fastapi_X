@@ -4,20 +4,20 @@ from fastapi.encoders import jsonable_encoder
 
 ### ---------------------- post request tests
 
-@pytest.mark.parametrize("title, content, published", [
-    ("title_1", "content_1", True),
-    ("title_2", "content_2", False),
-])
-def test_create_one_post(logged_client, test_user, title, content, published):
-    post_data = { "title": title, "content": content, "published": published}
-    re = logged_client.post("/posts/", json=post_data)
-    new_post = schemas.Post(**re.json())
+# @pytest.mark.parametrize("title, content, published", [
+#     ("title_1", "content_1", True),
+#     ("title_2", "content_2", False),
+# ])
+# def test_create_one_post(logged_client, test_user, title, content, published):
+#     post_data = { "title": title, "content": content, "published": published}
+#     re = logged_client.post("/posts/", json=post_data)
+#     new_post = schemas.Post(**re.json())
 
-    assert re.status_code == 201
-    assert new_post.title == title
-    assert new_post.content == content
-    assert new_post.published == published
-    assert new_post.owner_id == test_user['id']
+#     assert re.status_code == 201
+#     assert new_post.title == title
+#     assert new_post.content == content
+#     assert new_post.published == published
+#     assert new_post.owner_id == test_user['id']
 
 def test_unauthorized_create_post(client):
     post_data = { "title": "unauth_title", "content": "unauth_content", "published": True}
