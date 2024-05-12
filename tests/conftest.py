@@ -19,14 +19,14 @@ TestSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=test_eng
 def session():
     # models.Base.metadata.drop_all(bind=test_engine)   # command.downgrade('base')
     # models.Base.metadata.create_all(bind=test_engine) # command.upgrade('head')
-    
+    command.downgrade('base')
     command.upgrade('head')
     db = TestSessionLocal()
     try:
         yield db
     finally:
         db.close()
-    command.downgrade('base')
+    
 
 @pytest.fixture
 def client(session):
