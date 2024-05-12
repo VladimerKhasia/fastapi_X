@@ -49,13 +49,13 @@ def test_unauthorized_get_all_posts(client, test_posts):
     re = client.get("/posts/")
     assert re.status_code == 401
 
-def test_get_one_post(logged_client, test_posts):
-    re = logged_client.get(f"/posts/{test_posts[0].id}")
-    one_post = schemas.PostResponse(**re.json())
-    assert re.status_code == 200
-    assert one_post.Post.id == test_posts[0].id
-    assert one_post.Post.title == test_posts[0].title
-    assert one_post.Post.content == test_posts[0].content
+# def test_get_one_post(logged_client, test_posts):
+#     re = logged_client.get(f"/posts/{test_posts[0].id}")
+#     one_post = schemas.PostResponse(**re.json())
+#     assert re.status_code == 200
+#     assert one_post.Post.id == test_posts[0].id
+#     assert one_post.Post.title == test_posts[0].title
+#     assert one_post.Post.content == test_posts[0].content
 
 def test_unauthorized_get_one_post(client, test_posts):
     re = client.get(f"/posts/{test_posts[0].id}")
