@@ -19,8 +19,9 @@ def create_access_token(data: dict):
     # expires = timegm(expiration.utctimetuple())  #timegm(datetime.now(timezone.utc)).utctimetuple()
     # expiration = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     # expires = timegm(expiration.utctimetuple())
-    expires = timegm(datetime.now(timezone.utc).utctimetuple()) + ACCESS_TOKEN_EXPIRE_MINUTES
-    print("--------------------", expires, timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES))
+    unix_timestamp = timegm(datetime.now(timezone.utc).utctimetuple()) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES).total_seconds()
+    expires = datetime.fromtimestamp(unix_timestamp, tz=timezone.utc)
+    print("--------------------", expires)
     content.update({"exp": expires})
     return jwt.encode(content, key=SECRET_KEY, algorithm=ALGORITHM) 
 
