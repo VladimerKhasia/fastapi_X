@@ -1,8 +1,9 @@
 from datetime import datetime
 from typing import Optional
 from sqlalchemy import TIMESTAMP, text, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship #, MappedAsDataclass
+from sqlalchemy.orm import Mapped, mapped_column, relationship, DeclarativeBase #, MappedAsDataclass
 
+### from .database import Base      ##old way of doing it. see database.py 
 class Base(DeclarativeBase):
     """If you want create as dataclass: 
        class Base(MappedAsDataclass, DeclarativeBase) 

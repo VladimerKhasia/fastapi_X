@@ -31,8 +31,8 @@ Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/l
 
 REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=44689s) and many thanks to him!
 
-#### ⚡NOTE:⚡ If you are using Windows or simply wish to quickly experiment with the code on your machine without proceeding through the upcoming sections of this README file, you can simply delete the files `gunicorn.service` and `nginx`.
->You may also observe that `pytest` is intentionally excluded from the `requirements.txt` file. However, you can easily install it on your local machine using the command `pip install pytest` and explore tests.
+#### ⚡NOTE:⚡ If you are using Windows or simply wish to quickly experiment with the code (up to CI workflow) without proceeding through the upcoming sections of this README file, you can simply delete the files `gunicorn.service` and `nginx`. In such case you still need postgresql on your machine.
+>You may also observe that `pytest` is intentionally excluded from the `requirements.txt` file. However, you can easily install it on your local machine using the command `pip install pytest` and explore tests. 
 
 
 📑 Deployment to the Ubuntu VM:
