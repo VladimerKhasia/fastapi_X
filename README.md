@@ -34,7 +34,7 @@ REFERENCE: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=
 #### ⚡NOTE:⚡ If you are using Windows or simply wish to quickly experiment with the code on your local machine without proceeding through the upcoming sections of this README file, you can simply ignore the files `gunicorn.service` and `nginx`. In such case: 
 > 1. Install postgresql on your machine.  
 > 2. Clone the repository `git clone https://github.com/VladimerKhasia/fastapi_X.git .`
-> 3. Install and activate virtual environment (there are many ways for this step which also vary acrross platforms. Example for Windows: `pip install virtualenv` then `virtualenv venv` then activate it with `venv\Scripts\Activate.ps1`)
+> 3. Install and activate virtual environment. There are numerous methods for this step, which also vary across platforms. For instance, consider Windows as an example: `pip install virtualenv` then `virtualenv venv` then activate it with `venv\Scripts\Activate.ps1`
 > 4. Install dependencies `pip install -r requirements.txt`
 > 5. You may observe that `pytest` is intentionally excluded from the `requirements.txt` file. However, you can easily install it on your local machine using the command `pip install pytest` and explore tests. 
 > 6. If you are on windows you have to close and reopen your code editor (e.g. VSCode) after you have created python environment and installed all needed packages with `pip install -r requirements.txt` and `pip install pytest`.
