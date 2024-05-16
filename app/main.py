@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from .routers import login, users, posts, votes
+from .routers import login, users, gemma, posts, votes
 from fastapi.middleware.cors import CORSMiddleware
 from .database import engine
 from . import models
@@ -19,6 +19,7 @@ app.add_middleware(
 
 app.include_router(login.router)
 app.include_router(users.router)
+app.include_router(gemma.router)
 app.include_router(posts.router)
 app.include_router(votes.router)
 

@@ -15,6 +15,7 @@ jobs:
       SECRET_KEY: ${{secrets.SECRET_KEY}}
       ALGORITHM: ${{secrets.ALGORITHM}}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}} 
+      HF_TOKEN: ${{secrets.HF_TOKEN}} 
     services:
       postgres:
         image: postgres
@@ -34,8 +35,11 @@ jobs:
     #   matrix:
     #     python-version: ["3.12", "3.13"]
     steps:  
-      - name: pull git repo (checkout)
-        uses: actions/checkout@v4    
+      - name: pull git repo and setup dependencies
+        uses: actions/checkout@v4   
+      # - name: Connect to PostgreSQL
+      #   run: |
+      #     psql -h $POSTGRES_HOST -U $POSTGRES_USER -W $POSTGRES_PASSWORD $POSTGRES_DB  # Replace with your connection details
       - name: install python
         uses: actions/setup-python@v5
         with: 
@@ -85,6 +89,7 @@ jobs:
   #     SECRET_KEY: ${{secrets.PROD_SECRET_KEY}}
   #     ALGORITHM: ${{secrets.PROD_ALGORITHM}}
   #     ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.PROD_ACCESS_TOKEN_EXPIRE_MINUTES}} 
+  #     HF_TOKEN: ${{secrets.HF_TOKEN}} 
   #   steps:
   #     - name: deploy to ubuntu server
   #       uses: appleboy/ssh-action@master

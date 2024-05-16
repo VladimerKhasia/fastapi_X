@@ -41,3 +41,6 @@ class Vote(BaseModel):
     post_id: int
     direction: Literal[0,1]
 
+class ChatMessage(BaseModel):
+    role: str = Literal['user', 'model']
+    content: str

@@ -20,6 +20,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       ALGORITHM: ${ALGORITHM}
       ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+      HF_TOKEN: ${HF_TOKEN}
 
   postgres:
     image: postgres
