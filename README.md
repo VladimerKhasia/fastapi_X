@@ -1,11 +1,17 @@
 ![github-actions](https://github.com/VladimerKhasia/fastapi_X/actions/workflows/main.yml/badge.svg)
 
-Simplified backend for X    
+Simplified backend for X with Gemma in the role of Grok.ai 
 
 `PyTorch` `Generative AI` `gemma-2b-it` `Hugging Face` `fastapi` `pydantic` `sqlalchemy 2` `alembic` `postgresql` `pytest` `docker` `CI/CD github-actions` etc.
 
-Quick overview of current version:
-![Capture](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/f9c0d160-f737-4d26-8185-6fd88737c43d)
+Quick overview of the whole application:
+
+![1](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/8f4c6147-9959-4910-935f-5fa383495f6a)
+
+Gemma playing the role of Grok
+
+![2](https://github.com/VladimerKhasia/fastapi_X/assets/56228503/ddc424c6-9242-493e-8ac1-6630a7c1c3ad)
+
 
 
 You need to add .env file in the root directory. Example .env file looks like this:
@@ -24,9 +30,9 @@ HF_TOKEN = 'hfaoejfw8wognwo8ong49gg0ggwlgrmrmlsknlk'
 #### DB_NAME = #postgres #fastapi_X 
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
-<<<<<<< HEAD
+
 >To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt) 
-=======
+
 >To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt)
 
 
@@ -44,7 +50,7 @@ REFERENCE for the general API dev: [Sanjeev Thiyagarajan](https://www.youtube.co
 > 5. You may observe that `pytest` is intentionally excluded from the `requirements.txt` file. However, you can easily install it on your local machine using the command `pip install pytest` and explore tests. 
 > 6. If you are using Windows, you need to close and reopen your code editor (e.g., VSCode) after creating the Python environment and installing all necessary packages using `pip install -r requirements.txt` and `pip install pytest`.
 > 7. Run the app: `uvicorn app.main:app --reload` Note app.main refers to the main.py file inside app folder and next app after colon refers to the fastapi instance `app = FastAPI()` we created inside main.py. 
-> 8. Paste this link, `http://127.0.0.1:8000/docs`, into your browser (e.g., Google Chrome). Under the "Users" section, select the POST method and submit some user credentials. Use the credentials you posted to authorize via the green `Authorize` button in the upper right corner. You can now access all features and explore the app.
+> 8. Paste this link, `http://127.0.0.1:8000/docs`, into your browser (e.g., Google Chrome). Under the "Users" section, select the POST method and submit some user credentials. Use the credentials you posted to authorize via `Authorize` button in the upper right corner. You can now access all features and explore the app.
 > 9. NOTE: If you choose to use this code for a CI workflow without following the upcoming deployment steps for an Ubuntu VM, you might need to implement some additional tweaks. To use the CI/CD workflow with GitHub Actions, you must create secrets in your GitHub repository, which are referenced in the `.github/workflows/main.yml` file. To create these secrets, navigate to your repository on GitHub: fastapi_X -> Settings -> Secrets and variables -> Actions. 
 
 
