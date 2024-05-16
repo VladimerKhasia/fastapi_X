@@ -33,9 +33,6 @@ HF_TOKEN = 'hfaoejfw8wognwo8ong49gg0ggwlgrmrmlsknlk'
 
 >To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt) 
 
->To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt)
-
-
 >HF_TOKEN refers to the Hugging Face token, which you get after you create an account on Hugging Face.
 
 Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
@@ -51,7 +48,7 @@ REFERENCE for the general API dev: [Sanjeev Thiyagarajan](https://www.youtube.co
 > 6. If you are using Windows, you need to close and reopen your code editor (e.g., VSCode) after creating the Python environment and installing all necessary packages using `pip install -r requirements.txt` and `pip install pytest`.
 > 7. Run the app: `uvicorn app.main:app --reload` Note app.main refers to the main.py file inside app folder and next app after colon refers to the fastapi instance `app = FastAPI()` we created inside main.py. 
 > 8. Paste this link, `http://127.0.0.1:8000/docs`, into your browser (e.g., Google Chrome). Under the "Users" section, select the POST method and submit some user credentials. Use the credentials you posted to authorize via `Authorize` button in the upper right corner. You can now access all features and explore the app.
-> 9. NOTE: If you choose to use this code for a CI workflow without following the upcoming deployment steps for an Ubuntu VM, you might need to implement some additional tweaks. To use the CI/CD workflow with GitHub Actions, you must create secrets in your GitHub repository, which are referenced in the `.github/workflows/main.yml` file. To create these secrets, navigate to your repository on GitHub: fastapi_X -> Settings -> Secrets and variables -> Actions. 
+> 9. NOTE: If you choose to use this code for a CI workflow without following the upcoming deployment steps for an Ubuntu VM, you might need to implement some additional tweaks. To use the CI/CD workflow with GitHub Actions, you must create secrets in your GitHub repository, which are referenced in the `.github/workflows/main.yml` file. To create these secrets, navigate to your repository on GitHub: `fastapi_X -> Settings -> Secrets and variables -> Actions`. 
 
 
 📑 Deployment to the Ubuntu VM:
