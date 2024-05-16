@@ -25,6 +25,7 @@ HF_TOKEN = 'hfaoejfw8wognwo8ong49gg0ggwlgrmrmlsknlk'
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
 >To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt) 
+
 >HF_TOKEN refers to the Hugging Face token, which you get after you create an account on Hugging Face.
 
 Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
@@ -32,15 +33,15 @@ Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/l
 REFERENCE for the general API dev: [Sanjeev Thiyagarajan](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=44689s) 
 
 #### ⚡NOTE:⚡ If you are using Windows or simply wish to quickly experiment with the code on your local machine without proceeding through the upcoming sections of this README file, you can simply ignore the files `gunicorn.service` and `nginx`. In such case: 
-> 1. Install postgresql on your machine, open pgAdmin and just login to the postgres. You do not need to create any database by yourself.  
+> 1. Install PostgreSQL on your machine, open pgAdmin, and log in to the postgres user. You do not need to create any databases yourself. Remember that the postgres user password and the database password are different. This setup is only required the first time; you won't need to repeat these steps afterwards.  
 > 2. Open powershell and clone the repository `git clone https://github.com/VladimerKhasia/fastapi_X.git .`
 > 3. Go inside project folder fastapi_X with your powershell, install and activate virtual environment. There are numerous methods for this step, which also vary across platforms. For instance, consider Windows as an example: `pip install virtualenv` then `virtualenv venv` then activate it with `venv\Scripts\Activate.ps1`
 > 4. Install dependencies `pip install -r requirements.txt`
 > 5. You may observe that `pytest` is intentionally excluded from the `requirements.txt` file. However, you can easily install it on your local machine using the command `pip install pytest` and explore tests. 
 > 6. If you are using Windows, you need to close and reopen your code editor (e.g., VSCode) after creating the Python environment and installing all necessary packages using `pip install -r requirements.txt` and `pip install pytest`.
 > 7. Run the app: `uvicorn app.main:app --reload` Note app.main refers to the main.py file inside app folder and next app after colon refers to the fastapi instance `app = FastAPI()` we created inside main.py. 
-> 8. Paste this link `http://127.0.0.1:8000/docs` into your browser (e.g. Google Chrome). Under Users select post method and post some user credentials. Use the user credentials you posted to authorize via green `Authorize` button in the upper right corner. Now you can access everything and play with the app.
-> 9. NOTE: If you decide to use this code also for CI workflow without following upcoming deployment steps for Ubuntu VM, you might need implement some additional tweeks. In any case, to use CI/CD workflow with github actions you need to create secrets on your github that are used in `.github/workflows/main.yml` file. To create those secrets just go to your uploaded repository on github: fastapi_X -> settings -> secrets and variables -> actions.
+> 8. Paste this link, `http://127.0.0.1:8000/docs`, into your browser (e.g., Google Chrome). Under the "Users" section, select the POST method and submit some user credentials. Use the credentials you posted to authorize via the green `Authorize` button in the upper right corner. You can now access all features and explore the app.
+> 9. NOTE: If you choose to use this code for a CI workflow without following the upcoming deployment steps for an Ubuntu VM, you might need to implement some additional tweaks. To use the CI/CD workflow with GitHub Actions, you must create secrets in your GitHub repository, which are referenced in the `.github/workflows/main.yml` file. To create these secrets, navigate to your repository on GitHub: fastapi_X -> Settings -> Secrets and variables -> Actions. 
 
 
 📑 Deployment to the Ubuntu VM:

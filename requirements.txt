@@ -61,9 +61,9 @@ starlette==0.36.3
 sympy==1.12
 tbb==2021.11.0
 tokenizers==0.19.1
-torch==2.3.0+cu118
-torchaudio==2.3.0+cu118
-torchvision==0.18.0+cu118
+torch==2.3.0  #+cu118
+torchaudio==2.3.0 #+cu118
+torchvision==0.18.0 #+cu118
 tqdm==4.66.4
 transformers==4.40.2
 typing_extensions==4.10.0
