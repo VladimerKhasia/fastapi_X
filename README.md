@@ -24,7 +24,8 @@ HF_TOKEN = 'hfaoejfw8wognwo8ong49gg0ggwlgrmrmlsknlk'
 #### DB_NAME = #postgres #fastapi_X 
 #### DB_HOST = #postgres #localhost #postgres instead of localhost - docker directly references to postgres
 ```
->To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt) 
+>To get a SECRET_KEY string run this command but use git bash terminal if you are on windows:  `openssl rand -hex 32` see [documentation](https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/?h=jwt)
+
 >HF_TOKEN refers to the Hugging Face token, which you get after you create an account on Hugging Face.
 
 Docker Image is uploaded here: [ladokhasia/fastapi_x](https://hub.docker.com/r/ladokhasia/fastapi_x)
